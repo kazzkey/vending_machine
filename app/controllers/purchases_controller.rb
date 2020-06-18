@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
   before_action :set_slot, only: %i[index done create]
 
   def index
-    @stocks = Stock.all
+    @stocks = Stock.order(:id)
   end
 
   def done

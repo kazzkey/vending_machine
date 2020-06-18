@@ -2,7 +2,7 @@ class StocksController < ApplicationController
   before_action :set_stock, only: %i[show edit update]
 
   def index
-    @stocks = Stock.all
+    @stocks = Stock.order(:id)
   end
 
   def show
