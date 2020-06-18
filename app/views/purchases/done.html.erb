@@ -1,5 +1,11 @@
-<h1>購入完了</h1>
-<p>お買い上げいただきありがとうございます。</p>
-
-<%= image_tag @stock.image.url, size: '640x400' %>
-<%= @stock.name %>
+<div class="row">
+  <h1 class="logo">Have a Nice Break!</h1>
+  <h3>今日も一日おつかれさまです！</h3>
+  <div>
+    <%= image_tag @stock.image.url, class: "col-xs-12 img-responsive" %>
+  </div>
+  <br>
+</div>
+<div class="row col-xs-offset-10 back-btn">
+  <%= link_to "戻る", root_path, class: "btn btn-default" %>
+</div>

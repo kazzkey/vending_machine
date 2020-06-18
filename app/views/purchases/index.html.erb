@@ -1,23 +1,38 @@
-<h1>自動販売機</h1>
+<h1 class="logo">VendingMachine</h1>
 
-<%= form_with(url: purchases_path, local: true) do |f| %>
-  <%= f.select :money, %w[10 50 100 500 1000] %>
-  <%= f.submit "投入" %>
-  <%= f.submit "払戻", name: 'return' %>
-<% end %>
+<div class="row drink-area">
+  <% @stocks.each do |s| %>
+    <div class="thumbnail col-xs-4 col-sm-4 col-md-4">
+      <%= image_tag s.image.url %>
+      <div class="caption">
+        <h3><%= s.name %></h3>
+        <h5 class="pull-right">¥<%= s.price %></h5>
+        <% if s.count == 0 %>
+          <p class="btn btn-danger">売り切れ</p>
+        <% else %>
+          <%= link_to "購入", done_purchase_path(s),class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<p>投入金額：<%= @slot.money %>円</p>
+<div class="row col-xs-offset-6 row col-sm-offset-8">
+  <%= form_with(url: purchases_path, local: true) do |f| %>
+    <div class="money-area pull-left">
+      <%= f.select :money, %w[10 50 100 500 1000], include_blank: true %>
+    </div>
+    <div class="btn-area">
+      <%= f.submit "投入", class: "btn btn-default" %>
+      <%= f.submit "払戻", name: 'return', class: "btn btn-default" %>
+    </div>
+  <% end %>
 
-<br>
-<% @stocks.each do |s| %>
-  <tr>
-    <td><%= image_tag s.image.url, size: '160x100' %></td>
-    <td><%= s.name %></td>
-    <td><%= s.price %></td>
-    <% if s.count == 0 %>
-      <td>売り切れ</td>
-    <% else %>
-      <td><%= link_to "Purchase", done_purchase_path(s) %></td>
-    <% end %>
-  </tr>
-<% end %>
+  <p class="slot-area">投入金額：<%= @slot.money %>円</p>
+</div>
+
+<div class="row notice-area">
+  <% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+</div>
