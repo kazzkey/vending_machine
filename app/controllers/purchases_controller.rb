@@ -9,7 +9,9 @@ class PurchasesController < ApplicationController
   def done
     if @slot.money >= @stock.price
       @stock.count -= 1
+      @slot.money -= @stock.price
       @stock.save
+      @slot.save
     else
       redirect_to root_path, notice: "お金が足りません！"
     end
