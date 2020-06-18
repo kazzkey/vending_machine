@@ -6,5 +6,7 @@ class PurchasesController < ApplicationController
   end
 
   def done
+    @stock.count -= 1
+    @stock.save
   end
 end

@@ -5,6 +5,10 @@
     <td><%= image_tag s.image.url, size: '160x100' %></td>
     <td><%= s.name %></td>
     <td><%= s.price %></td>
-    <td><%= link_to "Purchase", done_purchase_path(s) %></td>
+    <% if s.count == 0 %>
+      <td>売り切れ</td>
+    <% else %>
+      <td><%= link_to "Purchase", done_purchase_path(s) %></td>
+    <% end %>
   </tr>
 <% end %>
