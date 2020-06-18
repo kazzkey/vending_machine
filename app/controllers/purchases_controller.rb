@@ -11,7 +11,7 @@ class PurchasesController < ApplicationController
       @stock.count -= 1
       @stock.save
     else
-      redirect_to purchases_path, notice: "お金が足りません！"
+      redirect_to root_path, notice: "お金が足りません！"
     end
   end
 
@@ -20,11 +20,11 @@ class PurchasesController < ApplicationController
       @return = @slot.money
       @slot.money = 0
       @slot.save
-      redirect_to purchases_path, notice: "#{@return}円のお釣りです！"
+      redirect_to root_path, notice: "#{@return}円のお釣りです！"
     else
       @slot.money += params[:money].to_i
       @slot.save
-      redirect_to purchases_path
+      redirect_to root_path
     end
   end
 
