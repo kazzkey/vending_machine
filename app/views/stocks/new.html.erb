@@ -1,0 +1,10 @@
+<%= form_with(model: @stock, local: true) do |f| %>
+
+  <%= f.text_field :name, placeholder: "Drink Name" %>
+
+  <%= f.number_field :price %>
+
+  <%= f.select :count, %w[1 2 3 4 5 6 7 8 9 10]%>
+
+  <%= f.submit %>
+<% end %>
