@@ -2,6 +2,7 @@
 
 <% @stocks.each do |s| %>
   <tr>
+    <td><%= image_tag s.image.url, size: '160x100' %></td>
     <td><%= s.name %></td>
     <td><%= s.price %></td>
     <td><%= link_to "Purchase", done_purchase_path(s) %></td>
