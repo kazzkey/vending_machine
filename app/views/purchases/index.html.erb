@@ -1,5 +1,14 @@
 <h1>自動販売機</h1>
 
+<%= form_with(url: purchases_path, local: true) do |f| %>
+  <%= f.select :money, %w[10 50 100 500 1000] %>
+  <%= f.submit "投入" %>
+  <%= f.submit "払戻", name: 'return' %>
+<% end %>
+
+<p>投入金額：<%= @slot.money %>円</p>
+
+<br>
 <% @stocks.each do |s| %>
   <tr>
     <td><%= image_tag s.image.url, size: '160x100' %></td>
