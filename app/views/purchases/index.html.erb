@@ -1,0 +1,9 @@
+<h1>自動販売機</h1>
+
+<% @stocks.each do |s| %>
+  <tr>
+    <td><%= s.name %></td>
+    <td><%= s.price %></td>
+    <td><%= link_to "Purchase", done_purchase_path(s) %></td>
+  </tr>
+<% end %>
