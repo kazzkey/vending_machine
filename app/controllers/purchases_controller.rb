@@ -1,18 +1,21 @@
 class PurchasesController < ApplicationController
   before_action :set_stock, only: %i[done]
+  before_action :set_slot, only: %i[index done create]
 
   def index
     @stocks = Stock.all
-    @slot = Slot.first
   end
 
   def done
-    @stock.count -= 1
-    @stock.save
+    if @slot.money >= @stock.price
+      @stock.count -= 1
+      @stock.save
+    else
+      redirect_to purchases_path, notice: "お金が足りません！"
+    end
   end
 
   def create
-    @slot = Slot.first
     if params[:return]
       @return = @slot.money
       @slot.money = 0
@@ -23,5 +26,10 @@ class PurchasesController < ApplicationController
       @slot.save
       redirect_to purchases_path
     end
+  end
+
+  private
+  def set_slot
+    @slot = Slot.first
   end
 end
