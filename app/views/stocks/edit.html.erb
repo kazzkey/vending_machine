@@ -1,8 +1,28 @@
-<%= form_with(model: @stock, local: true) do |f| %>
+<div class="page-header clearfix">
+  <h1 class="pull-left">商品補充</h1>
+  <div class="pull-right back-btn">
+    <%= link_to '戻る', stocks_path, class: "btn btn-default" %>
+  </div>
+</div>
 
-  <%= f.collection_select :name, Stock.all, :name, :name %>
-
-  <%= f.select :fill, %w[1 2 3 4 5 6 7 8 9 10], include_blank: true %>
-
-  <%= f.submit %>
-<% end %>
+<div class="row col-xs-12">
+  <%= form_with(model: @stock, local: true) do |f| %>
+    <div class="form center-block">
+      <h3>ドリンク情報を更新</h3>
+      <br>
+      <div class="form-group col-xs-6">
+        <%= image_tag @stock.image.url, size: "150x100" %>
+      </div>
+      <div class="form-group col-xs-6">
+        <%= f.collection_select :name, Stock.all, :name, :name %>
+      </div>
+      <div class="form-group col-xs-6">
+        <span>補充数：</span>
+        <%= f.select :fill, %w[1 2 3 4 5 6 7 8 9 10], include_blank: true %>
+      </div>
+      <div class="form-group col-xs-offset-8 col-xs-4">
+        <%= f.submit '商品補充' %>
+      </div>
+    </div>
+  <% end %>
+</div>

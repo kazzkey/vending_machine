@@ -1,10 +1,29 @@
-<%= form_with(model: @stock, local: true) do |f| %>
+<div class="page-header clearfix">
+  <h1 class="pull-left">新商品登録</h1>
+  <div class="pull-right back-btn">
+    <%= link_to '戻る', stocks_path, class: "btn btn-default" %>
+  </div>
+</div>
 
-  <%= f.text_field :name, placeholder: "Drink Name" %>
+<div class="row col-xs-12">
+  <%= form_with(model: @stock, local: true) do |f| %>
+    <div class="form center-block">
+      <h3>ドリンク情報を入力</h3>
+      <br>
+      <div class="form-group col-xs-12">
+        <%= f.text_field :name, placeholder: "商品名", class: "form-control" %>
+      </div>
+      <div class="form-group col-xs-12">
+        <%= f.number_field :price, placeholder: "料金", class: "form-control" %>
+      </div>
+      <div class="form-group col-xs-offset-6 col-xs-6">
+        <span>補充数：</span>
+        <%= f.select :count, %w[1 2 3 4 5 6 7 8 9 10]%>
+      </div>
+      <div class="form-group col-xs-offset-8 col-xs-4">
+        <%= f.submit '商品登録' %>
+      </div>
+    </div>
+  <% end %>
 
-  <%= f.number_field :price %>
-
-  <%= f.select :count, %w[1 2 3 4 5 6 7 8 9 10]%>
-
-  <%= f.submit %>
-<% end %>
+</div>

@@ -17,18 +17,20 @@
   <% end %>
 </div>
 
-<div class="row col-xs-offset-6 row col-sm-offset-8">
+<div class="row">
   <%= form_with(url: purchases_path, local: true) do |f| %>
-    <div class="money-area pull-left">
-      <%= f.select :money, %w[10 50 100 500 1000], include_blank: true %>
-    </div>
-    <div class="btn-area">
-      <%= f.submit "投入", class: "btn btn-default" %>
-      <%= f.submit "払戻", name: 'return', class: "btn btn-default" %>
+    <div class="claerfix">
+      <div class="btn-area pull-right">
+        <%= f.submit "投入", class: "btn btn-default" %>
+        <%= f.submit "払戻", name: 'return', class: "btn btn-default" %>
+      </div>
+      <div class="money-area pull-right">
+        <%= f.select :money, %w[10 50 100 500 1000], include_blank: true %>
+      </div>
     </div>
   <% end %>
 
-  <p class="slot-area">投入金額：<%= @slot.money %>円</p>
+  <p class="slot-area col-xs-offset-6 col-xs-6">投入金額：<%= @slot.money %>円</p>
 </div>
 
 <div class="row notice-area">

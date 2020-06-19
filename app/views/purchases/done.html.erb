@@ -1,11 +1,13 @@
+<div class="page-header clearfix">
+  <h1 class="pull-left">Thank you!</h1>
+  <div class="pull-right back-btn">
+    <%= link_to '戻る', root_path, class: "btn btn-default" %>
+  </div>
+</div>
+
 <div class="row">
-  <h1 class="logo">Have a Nice Break!</h1>
-  <h3>今日も一日おつかれさまです！</h3>
   <div>
-    <%= image_tag @stock.image.url, class: "col-xs-12 img-responsive" %>
+    <%= image_tag @stock.image.url, class: "center-block img-responsive" %>
   </div>
   <br>
-</div>
-<div class="row col-xs-offset-10 back-btn">
-  <%= link_to "戻る", root_path, class: "btn btn-default" %>
 </div>
