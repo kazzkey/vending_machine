@@ -1,4 +1,9 @@
-<h1 class="logo">VendingMachine</h1>
+<div class="page-header clearfix">
+  <h1 class="logo pull-left">VendingMachine</h1>
+  <div class="pull-right btn-fix">
+    <%= link_to "管理ページ", stocks_path, class: "btn btn-default" %>
+  </div>
+</div>
 
 <div class="row drink-area">
   <% @stocks.each do |s| %>
