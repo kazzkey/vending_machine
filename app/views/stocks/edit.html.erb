@@ -14,7 +14,7 @@
         <%= image_tag @stock.image.url, size: "150x100" %>
       </div>
       <div class="form-group col-xs-6">
-        <%= f.collection_select :name, Stock.all, :name, :name %>
+        ドリンク名：<%= @stock.name %>
       </div>
       <div class="form-group col-xs-6">
         <span>補充数：</span>
