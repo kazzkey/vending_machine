@@ -15,7 +15,7 @@ class StocksController < ApplicationController
   def create
     @stock = Stock.new(stock_params)
     if @stock.save
-      redirect_to stocks_path, notice: "Stock Complete."
+      redirect_to stocks_path, notice: "ドリンクを新規に登録しました"
     else
       render :new
     end
@@ -28,7 +28,7 @@ class StocksController < ApplicationController
     if params[:stock][:fill]
       @stock.count += params[:stock][:fill].to_i
       if @stock.update(stock_params)
-        redirect_to stocks_path, notice: "Stock update."
+        redirect_to stocks_path, notice: "ドリンクを補充しました"
       else
         render :edit
       end
@@ -37,6 +37,6 @@ class StocksController < ApplicationController
 
   def destroy
     @stock.destroy
-    redirect_to stocks_path, notice: 'Stock was destroyed.'
+    redirect_to stocks_path, notice: 'ドリンクを削除しました'
   end
 end
