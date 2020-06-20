@@ -1,5 +1,5 @@
 class StocksController < ApplicationController
-  before_action :set_stock, only: %i[show edit update]
+  before_action :set_stock, only: %i[show edit update destroy]
 
   def index
     @stocks = Stock.order(:id)
@@ -33,5 +33,10 @@ class StocksController < ApplicationController
         render :edit
       end
     end
+  end
+
+  def destroy
+    @stock.destroy
+    redirect_to stocks_path, notice: 'Stock was destroyed.'
   end
 end
